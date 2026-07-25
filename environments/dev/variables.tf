@@ -25,3 +25,7 @@ variable "subnet_address_prefixes" {
   description = "Address prefixes for the DEV subnet"
   type        = list(string)
 }
+variable "nsg_name" {
+  description = "Name of the Network Security Group"
+  type = string
+}

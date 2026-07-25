@@ -19,4 +19,11 @@ module "subnet" {
   resource_group_name  = module.resource_group.resource_group_name
   virtual_network_name = module.network.vnet_name
   address_prefixes     = var.subnet_address_prefixes
-}
+  }
+  module "nsg" {
+    source = "../../modules/nsg"
+
+    nsg name = var.nsg_name
+    resource_group_name = module.resource_group.resource_group_name
+    location = var.location
+  }
