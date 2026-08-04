@@ -29,3 +29,7 @@ variable "nsg_name" {
   description = "Name of the Network Security Group"
   type        = string
 }
+variable "nic_name" {
+  description = "Name of the Network Interface"
+  type        = string
+}

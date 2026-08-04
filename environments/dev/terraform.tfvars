@@ -8,3 +8,4 @@ subnet_address_prefixes = [
   "10.0.1.0/24"
 ]
 nsg_name = "nsg-dev-app"
+nic_name = "nic-dev-app"

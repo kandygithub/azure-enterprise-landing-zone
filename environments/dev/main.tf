@@ -31,3 +31,10 @@ resource "azurerm_subnet_network_security_group_association" "subnet_nsg" {
   subnet_id                 = module.subnet.subnet_id
   network_security_group_id = module.nsg.nsg_id
 }
+module "network_interface" {
+  source              = "../../modules/network-interface"
+  nic_name            = var.nic_name
+  location            = var.location
+  resource_group_name = module.resource_group.resource_group_name
+  subnet_id           = module.subnet.subnet_id
+}
