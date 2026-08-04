@@ -27,5 +27,5 @@ variable "subnet_address_prefixes" {
 }
 variable "nsg_name" {
   description = "Name of the Network Security Group"
-  type = string
+  type        = string
 }

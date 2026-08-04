@@ -19,11 +19,15 @@ module "subnet" {
   resource_group_name  = module.resource_group.resource_group_name
   virtual_network_name = module.network.vnet_name
   address_prefixes     = var.subnet_address_prefixes
-  }
-  module "nsg" {
-    source = "../../modules/nsg"
+}
+module "nsg" {
+  source = "../../modules/nsg"
 
-    nsg name = var.nsg_name
-    resource_group_name = module.resource_group.resource_group_name
-    location = var.location
-  }
+  nsg_name            = var.nsg_name
+  resource_group_name = module.resource_group.resource_group_name
+  location            = var.location
+}
+resource "azurerm_subnet_network_security_group_association" "subnet_nsg" {
+  subnet_id                 = module.subnet.subnet_id
+  network_security_group_id = module.nsg.nsg_id
+}
