@@ -37,4 +37,24 @@ module "network_interface" {
   location            = var.location
   resource_group_name = module.resource_group.resource_group_name
   subnet_id           = module.subnet.subnet_id
+  public_ip_id        = module.public_ip.public_ip_id
+}
+module "linux_vm" {
+  source = "../../modules/linux-vm"
+
+  vm_name              = var.vm_name
+  location             = var.location
+  resource_group_name  = module.resource_group.resource_group_name
+  vm_size              = var.vm_size
+  admin_username       = var.admin_username
+  network_interface_id = module.network_interface.nic_id
+
+  admin_ssh_public_key = file(pathexpand("~/.ssh/id_ed25519.pub"))
+}
+module "public_ip" {
+  source = "../../modules/public-ip"
+
+  public_ip_name      = var.public_ip_name
+  location            = var.location
+  resource_group_name = module.resource_group.resource_group_name
 }

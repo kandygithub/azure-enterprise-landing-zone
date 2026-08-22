@@ -33,3 +33,21 @@ variable "nic_name" {
   description = "Name of the Network Interface"
   type        = string
 }
+variable "vm_name" {
+  description = "Name of the Linux Virtual Machine"
+  type        = string
+}
+
+variable "vm_size" {
+  description = "Size of the Linux Virtual Machine"
+  type        = string
+}
+
+variable "admin_username" {
+  description = "Administrator username for the Linux Virtual Machine"
+  type        = string
+}
+variable "public_ip_name" {
+  description = "Name of the Public IP"
+  type        = string
+}
