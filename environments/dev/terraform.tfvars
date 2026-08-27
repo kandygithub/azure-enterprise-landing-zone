@@ -10,6 +10,6 @@ subnet_address_prefixes = [
 nsg_name       = "nsg-dev-app"
 nic_name       = "nic-dev-app"
 vm_name        = "vm-dev-app"
-vm_size        = "Standard_B2als_v2"
+vm_size        = "Standard_D2s_v3"
 admin_username = "azureuser"
 public_ip_name = "pip-dev-app"
