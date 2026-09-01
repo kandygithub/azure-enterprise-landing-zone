@@ -37,10 +37,11 @@ module "network_interface" {
   location            = var.location
   resource_group_name = module.resource_group.resource_group_name
   subnet_id           = module.subnet.subnet_id
-  public_ip_id        = module.public_ip.public_ip_id
+  public_ip_id        = var.enable_vm ? module.public_ip[0].public_ip_id : null
 }
 module "linux_vm" {
   source = "../../modules/linux-vm"
+  count  = var.enable_vm ? 1 : 0
 
   vm_name              = var.vm_name
   location             = var.location
@@ -53,8 +54,16 @@ module "linux_vm" {
 }
 module "public_ip" {
   source = "../../modules/public-ip"
+  count  = var.enable_vm ? 1 : 0
 
   public_ip_name      = var.public_ip_name
   location            = var.location
   resource_group_name = module.resource_group.resource_group_name
+}
+module "storage_account" {
+  source = "../../modules/storage-account"
+
+  storage_account_name = var.storage_account_name
+  resource_group_name  = module.resource_group.resource_group_name
+  location             = var.location
 }

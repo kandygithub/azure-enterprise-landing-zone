@@ -51,3 +51,12 @@ variable "public_ip_name" {
   description = "Name of the Public IP"
   type        = string
 }
+variable "storage_account_name" {
+  description = "Name of the Azure Storage Account"
+  type        = string
+}
+variable "enable_vm" {
+  description = "Controls whether the VM and its Public IP are created"
+  type        = bool
+  default     = false
+}
